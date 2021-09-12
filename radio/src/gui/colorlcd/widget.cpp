@@ -186,7 +186,8 @@ void Widget::setFullscreen(bool fullscreen)
     setRect(parent->getRect());
     setLeft(parent->getScrollPositionX());
     this->fullscreen = true;
-    fsStartedTS = RTOS_GET_MS();
+    if (fsStartedTS == 0)
+      fsStartedTS = RTOS_GET_MS();
     bringToTop();
   }
 }
